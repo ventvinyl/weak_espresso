@@ -167,15 +167,16 @@ def work_gate(imp):
     lits = convert(imp)
     if not lits:
         return const_one()
-    litNames = []
+    lit_name = []
     for p in lits:
         if p[1] == 1:
-            litNames.append(inputs[p[0]])
+            lit_name.append(inputs[p[0]])
         else:
-            litNames.append(wnot(p[0]))
-    if len(litNames) == 1:
-        return litNames[0]
-    return and_literal(litNames)
+            lit_name.append(wnot(p[0]))
+    if len(lit_name) == 1:
+        return lit_name[0]
+    return and_literal(lit_name)
+
 """
 def popcount(x):
     return bin(x).count('1')
@@ -385,12 +386,12 @@ def gaussian_solve_bitpacked(m):
 def check_affine_xor_bitpacked(f):
     global I, rows
     nvars = I
-    rowsList = []
+    rows_list = []
     for r in range(rows):
         if f[r] != -1:
-            rowsList.append(r)
+            rows_list.append(r)
     
-    eqs = len(rowsList)
+    eqs = len(rows_list)
     vars_count = nvars + 1
     
     if eqs == 0:
@@ -399,7 +400,7 @@ def check_affine_xor_bitpacked(f):
     m = bit_matrix(eqs, vars_count + 1)
     
     for ri in range(eqs):
-        r = rowsList[ri]
+        r = rows_list[ri]
         for i in range(nvars):
             bit = (r >> (nvars - 1 - i)) & 1
             if bit:
@@ -426,12 +427,12 @@ def try_xor_cover_with_primes_bitpacked(primes, f, sel_out):
     if p == 0:
         return False
     
-    rowsList = []
+    rows_list = []
     for r in range(r):
         if f[r] != -1:
-            rowsList.append(r)
+            rows_list.append(r)
     
-    n = len(rowsList)
+    n = len(rows_list)
     if n == 0:
         sel_out[:] = [0] * p
         return True
@@ -439,7 +440,7 @@ def try_xor_cover_with_primes_bitpacked(primes, f, sel_out):
     m = bit_matrix(n, p + 1)
     
     for i in range(n):
-        r = rowsList[i]
+        r = rows_list[i]
         for p in range(p):
             mask = primes[p].mask
             dc = primes[p].dc
