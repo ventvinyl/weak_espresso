@@ -1,3 +1,21 @@
+"""
+by hanbyoel lee(known as ventvinyl, youngyangze, nttntt1)
+wrote in utf-8
+using MIT LICENSE
+"""
+
+"""
+이걸 보는 사람들을 위하여
+
+이 코드를 수정하려거나, 이해하려고 하지 말아주세요.
+거창한 것은 아니고 이런 것에 시간을 낭비해주지 않아주셨으면 좋겠습니다.
+이미 타인에게 코드를 이해시키는 것을 포기하였습니다.
+또한 코드가 정갈하지 않습니다.
+죄송합니다.
+
+P.S. 이 코드는 심각한 문제나 오류가 있는 것이 아니라면 수정하지 않을 예정입니다.
+"""
+
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from collections import deque, defaultdict
 from typing import List
